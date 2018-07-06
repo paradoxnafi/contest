@@ -1,24 +1,25 @@
 #include <stdio.h>
-#include <math.h>
  
 int main()
 {
 	int n, m, a, l, w, block;
-
 	scanf(" %d %d %d", &n, &m, &a);
 
-	l = floor( n/a );
-	if( (l % a) != 0 ) {
+	l =  n/a ;
+	w =  m/a ;
+
+	if( (n%a != 0) && (m%a != 0) ) {
 		l++;
-	}
-
-	w = floor( m/a );
-	if( (m % a) != 0) {
 		w++;
-	}
-
-	block = l*w;
-
+		block = (l*w) + 1;
+	} else if( n%a != 0 ) {
+		l++;
+		block = l*w;
+	} else if( m%a != 0) {
+		w++;
+		block = l*w;
+	} 
+	
 	printf("%d \n", block);
 
 	return 0;
